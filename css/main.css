@@ -1,0 +1,387 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header h1 {
+  padding: 3rem 2rem;
+  background: rgb(182, 180, 180);
+  color: #0f0f0f;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 5px solid rgb(65, 64, 64);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  margin: 1rem auto 0;
+}
+
+.nav .nav-menu {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav .nav-menu .nav-item .nav-link {
+  display: inline-block;
+  line-height: 2.5rem;
+  padding: 0 1.3rem;
+  text-decoration: none;
+  color: #0f0f0f;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 350ms ease;
+}
+
+.nav .nav-menu .nav-item .nav-link:hover {
+  background: rgb(10, 157, 241);
+  color: #ffffff;
+}
+
+#search {
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #0f0f0f;
+  outline: 1px solid rgb(10, 157, 241);
+  vertical-align: middle;
+  border: none;
+  border-radius: 3px;
+}
+
+#searchBtn {
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: #0f0f0f;
+  cursor: pointer;
+  outline: 1px solid rgb(10, 157, 241);
+  border: none;
+  border-radius: 3px;
+  vertical-align: middle;
+  transition: background 350ms ease;
+}
+
+#searchBtn:hover {
+  background: rgb(10, 157, 241);
+  color: #ffffff;
+}
+
+/* ---------- Coins section START ---------- */
+.coins-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 60%;
+  margin: 1rem auto 0;
+  scroll-snap-type: y mandatory;
+  overflow: scroll;
+  height: calc(100vh - 14rem);
+}
+
+.coins-container::-webkit-scrollbar {
+  width: 0;
+}
+
+.coin-card {
+  position: relative;
+  flex: 30%;
+  max-width: 30%;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(190, 188, 188);
+  border-radius: 3px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  scroll-snap-align: start;
+}
+
+.coin-symbol {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.coin-id {
+  color: #363333;
+  margin-bottom: 0.4rem;
+}
+
+.coin-btn {
+  font-size: 1.1rem;
+  padding: 0.5rem 0.8rem;
+  background: rgb(10, 157, 241);
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.coin-btn:hover {
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.select-btn-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.select-btn {
+  display: none;
+}
+
+.select-btn-label {
+  cursor: pointer;
+}
+
+.select-btn-label div {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border: 1px solid rgb(190, 188, 188);
+  border-radius: 20px;
+}
+
+.select-btn + .select-btn-label > div > span {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgb(190, 188, 188);
+  transition: all 350ms ease;
+}
+
+.select-btn:checked + .select-btn-label > div > span {
+  left: 20px;
+  background: rgb(10, 157, 241);
+}
+
+.modal,
+.modalx {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid rgb(190, 188, 188);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 3px;
+  animation: details-sliding 500ms ease-out both;
+}
+
+.details-container {
+  align-items: center;
+}
+
+.checked-container {
+  align-items: stretch;
+}
+
+.details-price-header {
+  font-size: 1.1rem;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cross {
+  position: relative;
+  top: -1rem;
+  align-self: flex-end;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.ok {
+  top: 0;
+  font-size: 1.1rem;
+  padding: 0.5rem 1.3rem;
+  background: #363333;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.checked-container h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.checked-coin-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.checked-coin-symbol {
+  color: #0f0f0f;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.checked-coin-remove-btn {
+  padding: 0.3rem;
+}
+
+@-o-keyframes details-sliding {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: 20%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes details-sliding {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: 20%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes details-sliding {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: 20%;
+    opacity: 1;
+  }
+}
+
+@keyframes details-sliding {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: 20%;
+    opacity: 1;
+  }
+}
+
+/* ---------- Coins section END ---------- */
+
+/* ---------- about section START ---------- */
+.about-container {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-image,
+.about-name,
+.about-tel {
+  margin-bottom: 0.2rem;
+}
+
+.about-image {
+  width: 200px;
+  height: 200px;
+  border: 5px solid #0f0f0f;
+  border-radius: 50%;
+}
+/* ---------- about section END ---------- */
+
+/* ---------- report section START ---------- */
+#chartContainer {
+  margin-top: 1rem;
+}
+/* ---------- report section END ---------- */
+
+@media only screen and (max-width: 1024px) {
+  .nav {
+    width: 80%;
+  }
+  .coins-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    width: 90%;
+  }
+  .coins-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .nav {
+    flex-direction: column;
+  }
+  .search-container {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+
+  .nav .nav-menu .nav-item .nav-link {
+    line-height: 2rem;
+  }
+
+  .coin-card {
+    flex: 45%;
+    max-width: 45%;
+  }
+}
+
+@media only screen and (max-width: 506px) {
+  .coins-container {
+    width: 85%;
+  }
+
+  header h1 {
+    padding: 2rem 1rem;
+    font-size: 32px;
+  }
+
+  .coin-card {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .nav {
+    width: 98%;
+  }
+
+  header h1 {
+    padding: 1.7rem 1rem;
+    font-size: 24px;
+  }
+
+  .nav .nav-menu .nav-item .nav-link {
+    padding: 0 0.8rem;
+  }
+}
